@@ -1186,7 +1186,7 @@
     gap: 12px;
   }
   .uo-nav-links {
-    display: none; /* 手機版先隱藏分類連結 */
+    display: none;
   }
   .uo-logo {
     font-size: 14px;
@@ -1200,11 +1200,11 @@
     padding: 24px 16px;
   }
   .uo-hero-grid {
-    grid-template-columns: 1fr; /* 從兩欄改一欄 */
+    grid-template-columns: 1fr;
     gap: 32px;
   }
   .uo-hero-left h1 {
-    font-size: 64px !important; /* 大字縮小 */
+    font-size: 64px !important;
     line-height: 1 !important;
   }
   .uo-hero-left .lead {
@@ -1219,7 +1219,7 @@
     font-size: 13px;
   }
   .uo-hero-meta {
-    grid-template-columns: 1fr 1fr 1fr; /* 數字統計保持 3 欄 */
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 12px;
   }
   .uo-hero-meta .num {
@@ -1252,7 +1252,7 @@
 
   /* 商品網格改 2 欄 */
   .uo-prod-grid {
-    grid-template-columns: 1fr 1fr; /* 兩欄 */
+    grid-template-columns: 1fr 1fr;
     gap: 16px;
     padding: 0 16px;
   }
@@ -1271,7 +1271,7 @@
     padding: 32px 16px;
   }
   .uo-foot-grid {
-    grid-template-columns: 1fr 1fr; /* 4 欄改 2 欄 */
+    grid-template-columns: 1fr 1fr;
     gap: 24px;
   }
   .uo-foot h5 {
@@ -1286,14 +1286,58 @@
     font-size: 10px;
     text-align: center;
   }
+
+  /* ========== 新增：商品列表頁手機版 ========== */
+  
+  /* 列表頁的左右兩欄改成上下排列 */
+  .uo-list-body {
+    grid-template-columns: 1fr !important;
+    gap: 0;
+    padding: 0 16px 32px;
+  }
+
+  /* 左側篩選器移到上方，變成橫向可捲動的橫條 */
+  .uo-filter {
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid var(--uo-line);
+    padding: 16px 0;
+    margin-bottom: 16px;
+  }
+
+  .uo-filter-group {
+    margin-bottom: 16px;
+  }
+
+  .uo-filter-group h6 {
+    font-size: 11px;
+    margin-bottom: 8px;
+  }
+
+  .uo-filter-opt {
+    padding: 6px 0;
+    font-size: 12px;
+  }
+
+  /* 排序工具列 */
+  .uo-toolbar {
+    padding: 12px 0;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .uo-toolbar select {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
 }
 
 /* ===== 平板（769px - 1024px）===== */
 @media (min-width: 769px) and (max-width: 1024px) {
   .uo-prod-grid {
-    grid-template-columns: 1fr 1fr 1fr; /* 平板 3 欄 */
+    grid-template-columns: 1fr 1fr 1fr;
   }
   .uo-foot-grid {
-    grid-template-columns: 1fr 1fr; /* 平板 2 欄 */
+    grid-template-columns: 1fr 1fr;
   }
 }
