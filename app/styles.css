@@ -1171,3 +1171,129 @@
     repeating-linear-gradient(0deg, rgba(255,233,201,0.05) 0 2px, transparent 2px 4px),
     var(--uo-smoke);
 }
+/* ===== 響應式設計：手機版（≤768px）===== */
+@media (max-width: 768px) {
+
+  /* TopBar 跑馬燈 */
+  .uo-topbar {
+    padding: 8px 0;
+    font-size: 11px;
+  }
+
+  /* Nav 導覽列 - 改成 logo + 圖示，分類連結隱藏 */
+  .uo-nav {
+    padding: 12px 16px;
+    gap: 12px;
+  }
+  .uo-nav-links {
+    display: none; /* 手機版先隱藏分類連結 */
+  }
+  .uo-logo {
+    font-size: 14px;
+  }
+  .uo-logo small {
+    font-size: 9px;
+  }
+
+  /* Hero 區改單欄 */
+  .uo-hero {
+    padding: 24px 16px;
+  }
+  .uo-hero-grid {
+    grid-template-columns: 1fr; /* 從兩欄改一欄 */
+    gap: 32px;
+  }
+  .uo-hero-left h1 {
+    font-size: 64px !important; /* 大字縮小 */
+    line-height: 1 !important;
+  }
+  .uo-hero-left .lead {
+    font-size: 14px;
+  }
+  .uo-hero-cta {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .uo-btn {
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+  .uo-hero-meta {
+    grid-template-columns: 1fr 1fr 1fr; /* 數字統計保持 3 欄 */
+    gap: 12px;
+  }
+  .uo-hero-meta .num {
+    font-size: 28px;
+  }
+  .uo-hero-meta .lab {
+    font-size: 9px;
+  }
+  .uo-hero-right {
+    min-height: 280px;
+    padding: 24px;
+  }
+  .uo-hero-figure {
+    min-height: 200px;
+  }
+
+  /* 區塊標題 */
+  .uo-list-head {
+    padding: 32px 16px 16px;
+  }
+  .uo-list-title {
+    font-size: 48px !important;
+  }
+  .uo-list-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  /* 商品網格改 2 欄 */
+  .uo-prod-grid {
+    grid-template-columns: 1fr 1fr; /* 兩欄 */
+    gap: 16px;
+    padding: 0 16px;
+  }
+  .uo-prod-name {
+    font-size: 14px;
+  }
+  .uo-prod-brand {
+    font-size: 10px;
+  }
+  .uo-prod-price {
+    font-size: 14px;
+  }
+
+  /* Footer 改 2 欄 */
+  .uo-foot {
+    padding: 32px 16px;
+  }
+  .uo-foot-grid {
+    grid-template-columns: 1fr 1fr; /* 4 欄改 2 欄 */
+    gap: 24px;
+  }
+  .uo-foot h5 {
+    font-size: 11px;
+  }
+  .uo-foot ul {
+    font-size: 13px;
+  }
+  .uo-foot-bot {
+    flex-direction: column;
+    gap: 8px;
+    font-size: 10px;
+    text-align: center;
+  }
+}
+
+/* ===== 平板（769px - 1024px）===== */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .uo-prod-grid {
+    grid-template-columns: 1fr 1fr 1fr; /* 平板 3 欄 */
+  }
+  .uo-foot-grid {
+    grid-template-columns: 1fr 1fr; /* 平板 2 欄 */
+  }
+}

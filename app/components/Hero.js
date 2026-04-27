@@ -18,7 +18,7 @@ export default function Hero() {
               <a href="https://line.me/R/ti/p/@your-line-id" target="_blank" rel="noopener noreferrer" className="uo-btn red" style={{ textDecoration: 'none' }}>
                 LINE 詢問
               </a>
-              <a href="#products" className="uo-btn ghost" style={{ textDecoration: 'none' }}>
+              <a href="/products" className="uo-btn ghost" style={{ textDecoration: 'none' }}>
                 瀏覽商品
               </a>
             </div>

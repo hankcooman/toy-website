@@ -1,41 +1,46 @@
-import { client, urlFor } from '../sanity'
-import TopBar from './components/TopBar'
-import Nav from './components/Nav'
-import Hero from './components/Hero'
-import Footer from './components/Footer'
+import { client, urlFor } from '../../sanity'
+import TopBar from '../components/TopBar'
+import Nav from '../components/Nav'
+import Footer from '../components/Footer'
 
-async function getProducts() {
-  const query = `*[_type == "product" && isPublished == true] | order(_createdAt desc) [0...4] {
+async function getAllProducts() {
+  const query = `*[_type == "product" && isPublished == true] | order(_createdAt desc) {
     _id,
     name,
     productCode,
     basePrice,
     baseOriginalPrice,
     "ipSeriesName": ipSeries->name,
+    "ipSeriesSlug": ipSeries->slug.current,
     "categoryName": category->name,
+    "categorySlug": category->slug.current,
+    "categoryEmoji": category->emoji,
     baseStockStatus,
     tags,
     shortDescription,
-    mainImage
+    mainImage,
+    slug
   }`
-  const products = await client.fetch(query)
-  return products
+  return await client.fetch(query)
 }
 
-export default async function Home() {
-  const products = await getProducts()
+export default async function ProductsPage() {
+  const products = await getAllProducts()
 
   return (
     <>
       <TopBar />
       <Nav />
       <main>
-        <Hero />
-
-        <section id="products" className="uo-list-head">
-          <div className="uo-crumb">SECTION 02 · CURRENT COLLECTION</div>
+        {/* 麵包屑 + 標題 */}
+        <section className="uo-list-head">
+          <div className="uo-crumb">
+            <a href="/" style={{ color: 'inherit' }}>首頁</a>
+            {' / '}
+            <span>商品列表</span>
+          </div>
           <h1 className="uo-list-title">
-            最新上架
+            全部商品
             <span style={{
               color: 'var(--uo-red-bright)',
               fontFamily: 'var(--font-en)',
@@ -44,17 +49,18 @@ export default async function Home() {
               letterSpacing: '0.1em',
               marginLeft: 12,
             }}>
-              IN STOCK NOW
+              ALL PRODUCTS
             </span>
           </h1>
           <div className="uo-list-meta">
-            <span>共 {products.length} 件商品 · 玩出究極</span>
+            <span>共 {products.length} 件商品 · 收藏每一份歡喜</span>
             <span style={{ fontFamily: 'var(--font-en)', fontSize: 11, letterSpacing: '0.2em' }}>
-              UPDATED · 2026
+              SHOWING ALL
             </span>
           </div>
         </section>
 
+        {/* 商品網格 */}
         <section style={{ padding: '0 24px 64px' }}>
           {products.length === 0 ? (
             <div style={{ padding: 80, textAlign: 'center', color: 'var(--uo-mute)' }}>
@@ -87,34 +93,13 @@ export default async function Home() {
                     <div className="uo-prod-img">
                       {imageUrl ? (
                         <>
-                          <div
-                            className="img-a"
-                            style={{
-                              backgroundImage: `url(${imageUrl})`,
-                              backgroundSize: 'cover',
-                              backgroundPosition: 'center',
-                              backgroundColor: '#fff',
-                            }}
-                          />
-                          <div
-                            className="img-b"
-                            style={{
-                              backgroundImage: `url(${imageUrl})`,
-                              backgroundSize: 'cover',
-                              backgroundPosition: 'center',
-                              backgroundColor: '#fff',
-                              filter: 'brightness(0.95)',
-                            }}
-                          />
+                          <div className="img-a" style={{ backgroundImage: `url(${imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: '#fff' }} />
+                          <div className="img-b" style={{ backgroundImage: `url(${imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: '#fff', filter: 'brightness(0.95)' }} />
                         </>
                       ) : (
                         <>
-                          <div className="img-a">
-                            <span className="ph">{p.productCode || p.name.slice(0, 8)}</span>
-                          </div>
-                          <div className="img-b">
-                            <span className="ph">{p.productCode || p.name.slice(0, 8)} · ALT</span>
-                          </div>
+                          <div className="img-a"><span className="ph">{p.productCode || p.name.slice(0, 8)}</span></div>
+                          <div className="img-b"><span className="ph">{p.productCode || p.name.slice(0, 8)} · ALT</span></div>
                         </>
                       )}
                     </div>
@@ -143,17 +128,6 @@ export default async function Home() {
               })}
             </div>
           )}
-              {/* 「查看全部商品」按鈕 */}
-        {products.length > 0 && (
-          <div style={{ display: 'flex', justifyContent: 'center', padding: '0 24px 80px' }}>
-            <a href="/products" className="uo-btn ghost" style={{ textDecoration: 'none', fontSize: 14, padding: '14px 36px' }}>
-              查看全部商品 →
-            </a>
-          </div>
-        )}
-
-
-
         </section>
       </main>
       <Footer />
