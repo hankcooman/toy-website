@@ -22,7 +22,7 @@ async function getProduct(slug) {
     shortDescription,
     description,
     mainImage,
-    galleryImages,
+    gallery,
     variants,
     slug
   }`
@@ -36,9 +36,6 @@ export default async function ProductDetailPage({ params }) {
   if (!product) {
     notFound()
   }
-
-  // 整理所有圖片（主圖 + galleryImages）
-  const allImages = [product.mainImage, ...(product.galleryImages || [])].filter(Boolean)
 
   return (
     <>
@@ -56,8 +53,8 @@ export default async function ProductDetailPage({ params }) {
           </div>
         </section>
 
-        {/* 詳細頁主體（互動部分） */}
-        <ProductDetail product={product} allImages={allImages} />
+        {/* 詳細頁主體 */}
+        <ProductDetail product={product} />
       </main>
       <Footer />
     </>

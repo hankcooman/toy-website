@@ -37,14 +37,14 @@ function getStockLabel(status) {
   }
 }
 
-export default function ProductDetail({ product, allImages }) {
-  // 主圖 URL（只用第一張，也就是 mainImage）
+export default function ProductDetail({ product }) {
+  // 主圖 URL
   const mainImageUrl = product.mainImage
     ? urlFor(product.mainImage).width(1200).height(1200).fit('crop').url()
     : null
 
-  // 附圖（galleryImages，排在 PRODUCT DETAILS 下面）
-  const galleryImages = product.galleryImages || []
+  // 附圖（gallery，排在 PRODUCT DETAILS 下面）
+  const galleryList = product.gallery || []
 
   // LINE 預填訊息
   const lineMessage = encodeURIComponent(
@@ -66,7 +66,7 @@ export default function ProductDetail({ product, allImages }) {
     <div className="uo-detail">
       <div className="uo-detail-grid">
 
-        {/* 中間主圖（只顯示主圖，不切換縮圖） */}
+        {/* 主圖區（只顯示主圖） */}
         <div
           className="uo-main-img"
           style={{
@@ -146,10 +146,10 @@ export default function ProductDetail({ product, allImages }) {
         </div>
       )}
 
-      {/* 附圖區塊（galleryImages 大張排在描述下方） */}
-      {galleryImages.length > 0 && (
+      {/* 附圖區塊（gallery 大張排在描述下方） */}
+      {galleryList.length > 0 && (
         <div className="uo-detail-gallery">
-          {galleryImages.map((img, i) => {
+          {galleryList.map((img, i) => {
             const url = urlFor(img).width(1600).fit('max').url()
             return (
               <div
