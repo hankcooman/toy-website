@@ -1501,3 +1501,230 @@
     font-size: 13px;
   }
 }
+/* ===================================================== */
+/* 詳細頁 - 購買流程 + Hashtag 標籤                      */
+/* ===================================================== */
+
+/* Hashtag 標籤 */
+.uo-detail-hashtags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 24px;
+}
+
+.uo-hashtag {
+  font-family: var(--font-en);
+  font-size: 11px;
+  color: var(--uo-mute);
+  background: var(--uo-coal);
+  border: 1px solid var(--uo-line);
+  padding: 4px 10px;
+  border-radius: 999px;
+  cursor: default;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.uo-hashtag:hover {
+  color: var(--uo-paper);
+  border-color: var(--uo-line-strong);
+}
+
+/* 購買流程區塊 */
+.uo-detail-howto {
+  margin-top: 64px;
+  padding: 40px 0 0;
+  border-top: 1px solid var(--uo-line);
+}
+
+.uo-detail-howto h3 {
+  font-family: var(--font-en);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--uo-mute);
+  margin: 0 0 28px;
+  font-weight: 700;
+}
+
+.uo-howto-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.uo-howto-step {
+  background: var(--uo-coal);
+  border: 1px solid var(--uo-line);
+  padding: 24px 20px;
+  position: relative;
+  transition: border-color 0.2s ease;
+}
+
+.uo-howto-step:hover {
+  border-color: var(--uo-red);
+}
+
+.uo-howto-step .step-num {
+  font-family: var(--font-en);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--uo-red-bright);
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.uo-howto-step h4 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 900;
+  margin: 0 0 8px;
+  color: var(--uo-paper);
+}
+
+.uo-howto-step p {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--uo-mute);
+  margin: 0;
+}
+
+/* 注意事項 */
+.uo-howto-note {
+  background: rgba(184, 37, 44, 0.08);
+  border-left: 3px solid var(--uo-red);
+  padding: 16px 20px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--uo-paper);
+  border-radius: 0 4px 4px 0;
+}
+
+.uo-howto-note strong {
+  color: var(--uo-red-bright);
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+/* 商品描述加上標題的 PRODUCT DETAILS 風格 */
+.uo-detail-desc h3 {
+  font-family: var(--font-en) !important;
+  font-size: 11px !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  color: var(--uo-mute) !important;
+  font-weight: 700 !important;
+}
+
+/* ===================================================== */
+/* 購買流程 - 平板（1024px 以下）                        */
+/* ===================================================== */
+@media (max-width: 1024px) {
+  .uo-howto-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+}
+
+/* ===================================================== */
+/* 購買流程 - 手機（768px 以下）                         */
+/* ===================================================== */
+@media (max-width: 768px) {
+  .uo-detail-hashtags {
+    margin-bottom: 20px;
+  }
+
+  .uo-hashtag {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+
+  .uo-detail-howto {
+    margin-top: 40px;
+    padding-top: 28px;
+  }
+
+  .uo-detail-howto h3 {
+    margin-bottom: 20px;
+  }
+
+  .uo-howto-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .uo-howto-step {
+    padding: 18px 16px;
+  }
+
+  .uo-howto-step .step-num {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  .uo-howto-step h4 {
+    font-size: 15px;
+  }
+
+  .uo-howto-step p {
+    font-size: 12px;
+  }
+
+  .uo-howto-note {
+    padding: 12px 14px;
+    font-size: 12px;
+  }
+}
+/* ===================================================== */
+/* 詳細頁 - 庫存狀態小記號（跟在價格旁邊）              */
+/* ===================================================== */
+
+.uo-detail-stock-inline {
+  font-family: var(--font-en);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  margin-left: 8px;
+  align-self: center;
+}
+
+/* 手機版字體稍小 */
+@media (max-width: 768px) {
+  .uo-detail-stock-inline {
+    font-size: 12px;
+    margin-left: 6px;
+  }
+}
+/* ===================================================== */
+/* 詳細頁 - 附圖區塊（排在描述下方）                     */
+/* ===================================================== */
+
+.uo-detail-gallery {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.uo-detail-gallery-item {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--uo-coal);
+  border: 1px solid var(--uo-line);
+}
+
+/* ===================================================== */
+/* 詳細頁附圖 - 手機（768px 以下）                       */
+/* ===================================================== */
+@media (max-width: 768px) {
+  .uo-detail-gallery {
+    padding: 24px 0;
+    gap: 12px;
+  }
+}
