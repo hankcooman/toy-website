@@ -1754,3 +1754,125 @@
 }
 .uo-detail-stock-inline.stock-inStock { color: #2D8B3E !important; }
 .uo-detail-stock-inline.stock-preorder { color: #E8732A !important; }
+/* ===== Nav 整體放大 + Logo 圖片化（72px 高） ===== */
+.uo-nav {
+  min-height: 72px !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+
+/* Logo 圖片：限制高度，寬度自動，讓比例不變形 */
+.uo-logo-img {
+  height: 48px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* 把 .uo-logo 容器內舊的 span 樣式清掉（保險起見） */
+.uo-logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* 中央菜單字稍微加大 */
+.uo-nav-links a {
+  font-size: 15px !important;
+  letter-spacing: 0.05em;
+}
+
+/* LINE / IG 按鈕加大 */
+.uo-nav-icons .uo-icon-btn {
+  font-size: 13px !important;
+  min-width: 56px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 手機版：Logo 縮小一點，避免擠 */
+@media (max-width: 768px) {
+  .uo-nav {
+    min-height: 60px !important;
+  }
+  .uo-logo-img {
+    height: 36px;
+  }
+  .uo-nav-links a {
+    font-size: 13px !important;
+  }
+}
+/* ===== 佔位頁（製作中）==== */
+.uo-placeholder {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+}
+.uo-placeholder-inner {
+  max-width: 480px;
+  text-align: center;
+}
+.uo-placeholder-eyebrow {
+  font-family: var(--font-en);
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  color: var(--uo-red-bright);
+  margin-bottom: 16px;
+}
+.uo-placeholder-title {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0 0 24px 0;
+  color: var(--uo-ink);
+}
+.uo-placeholder-text {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--uo-mute);
+  margin-bottom: 40px;
+}
+.uo-placeholder-btn {
+  display: inline-block;
+  text-decoration: none;
+}
+
+/* 手機版佔位頁字體調整 */
+@media (max-width: 768px) {
+  .uo-placeholder-title {
+    font-size: 32px;
+  }
+  .uo-placeholder-text {
+    font-size: 14px;
+  }
+}
+
+/* ===== 菜單變 7 項：間距微調，避免擠在一起 ===== */
+.uo-nav-links {
+  gap: 32px !important;
+}
+.uo-nav-links a {
+  white-space: nowrap;
+  letter-spacing: 0.08em;
+}
+
+/* 平板尺寸：菜單字稍微縮小 + 間距收一點 */
+@media (max-width: 1100px) {
+  .uo-nav-links a {
+    font-size: 14px !important;
+  }
+  .uo-nav-links {
+    gap: 22px !important;
+  }
+}
+
+/* 手機版：菜單藏起，未來可改成漢堡選單（先讓畫面不爆） */
+@media (max-width: 768px) {
+  .uo-nav-links {
+    display: none !important;
+  }
+}

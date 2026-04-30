@@ -12,7 +12,7 @@ export default function Hero() {
               玩出 <span className="stroke">不羈</span>
             </h1>
             <p className="lead">
-              來自全球的玩具、盲盒與絨毛玩偶選品店。每月精選 IP 上架，從三麗鷗到吉伊卡哇，從迪士尼到鈴狶，究極玩陪你蒐藏每一份心動。
+              來自全球的玩具、盲盒與絨毛玩偶的集成商店。每月精選 IP 上架，商品皆是正版授權商品，請放心選購。
             </p>
             <div className="uo-hero-cta">
               <a href="https://line.me/R/ti/p/@your-line-id" target="_blank" rel="noopener noreferrer" className="uo-btn red" style={{ textDecoration: 'none' }}>
