@@ -28,11 +28,11 @@ function renderDescription(desc) {
  */
 function getStockLabel(status) {
   switch (status) {
-    case 'inStock':    return { text: '現貨', cls: 'in' }
-    case 'preorder':   return { text: '預購', cls: 'low' }
-    case 'incoming':   return { text: '到貨中', cls: 'low' }
-    case 'outOfStock': return { text: '缺貨', cls: 'low' }
-    case 'soldOut':    return { text: '已售完', cls: 'low' }
+    case 'inStock':    return { text: '現貨', cls: 'stock-inStock' }
+    case 'preorder':   return { text: '預購', cls: 'stock-preorder' }
+    case 'incoming':   return { text: '到貨中', cls: 'stock-incoming' }
+    case 'outOfStock': return { text: '缺貨', cls: 'stock-outOfStock' }
+    case 'soldOut':    return { text: '已售完', cls: 'stock-soldOut' }
     default:           return { text: '', cls: '' }
   }
 }

@@ -1728,3 +1728,29 @@
     gap: 12px;
   }
 }
+/* ===== 商品卡片徽章 - 統一改為黃底黑字 ===== */
+.uo-tag,
+.uo-tag.dark,
+.uo-tag.red {
+  background-color: #FFD60A !important;
+  color: #0E0E10 !important;
+  border-color: #FFD60A !important;
+}
+/* ===== 庫存狀態 - 列表頁卡片 ===== */
+.uo-prod-stock {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em;
+}
+.uo-prod-stock.stock-inStock { color: #2D8B3E !important; }    /* 現貨 - 綠 */
+.uo-prod-stock.stock-preorder { color: #E8732A !important; }   /* 預購 - 橘 */
+
+/* ===== 庫存狀態 - 詳細頁（價格旁邊那個） ===== */
+.uo-detail-stock-inline {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em;
+  margin-left: 8px;
+}
+.uo-detail-stock-inline.stock-inStock { color: #2D8B3E !important; }
+.uo-detail-stock-inline.stock-preorder { color: #E8732A !important; }

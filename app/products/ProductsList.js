@@ -157,6 +157,8 @@ export default function ProductsList({ products, ipSeriesList, categoryList }) {
                       {p.tags && p.tags.includes('new') && <span className="uo-tag dark">NEW</span>}
                       {p.tags && p.tags.includes('hot') && <span className="uo-tag red">HOT</span>}
                       {p.tags && p.tags.includes('limited') && <span className="uo-tag dark">LIMITED</span>}
+                      {p.tags && p.tags.includes('sale') && <span className="uo-tag red">SALE</span>}
+                      {p.tags && p.tags.includes('recommended') && <span className="uo-tag dark">RECOMMENDED</span>}
                       {p.baseStockStatus === 'preorder' && <span className="uo-tag dark">PRE-ORDER</span>}
                     </div>
 
@@ -184,7 +186,7 @@ export default function ProductsList({ products, ipSeriesList, categoryList }) {
                           )}
                           NT${p.basePrice}
                         </div>
-                        <span className={`uo-prod-stock ${p.baseStockStatus === 'inStock' ? 'in' : 'low'}`}>
+                        <span className={`uo-prod-stock stock-${p.baseStockStatus}`}>
                           {p.baseStockStatus === 'inStock' && '• 現貨'}
                           {p.baseStockStatus === 'preorder' && '• 預購'}
                           {p.baseStockStatus === 'incoming' && '• 到貨中'}
