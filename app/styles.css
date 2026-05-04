@@ -1876,3 +1876,187 @@
     display: none !important;
   }
 }
+
+/* ===== 漢堡選單系統（2026/05/04 新增） ===== */
+/* 取代上方「手機版菜單藏起」的過渡方案 */
+/* 桌機版（>768px）漢堡按鈕和滑出選單都不顯示，菜單留在 nav 上 */
+/* 手機版（≤768px）菜單藏起來、改顯示漢堡按鈕，點擊後從右邊滑出全屏選單 */
+
+/* 漢堡按鈕本體（預設藏起，只在手機版顯示） */
+.uo-hamburger {
+  display: none;
+  width: 38px;
+  height: 38px;
+  background: transparent;
+  border: 1px solid var(--uo-line-strong);
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: background .15s;
+}
+.uo-hamburger:hover {
+  background: var(--uo-smoke);
+}
+.uo-hamburger-bar {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--uo-paper);
+  border-radius: 2px;
+  transition: transform .25s ease, opacity .25s ease;
+}
+
+/* 漢堡按鈕打開時：三條線變 X */
+.uo-hamburger.is-open .uo-hamburger-bar:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.uo-hamburger.is-open .uo-hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+.uo-hamburger.is-open .uo-hamburger-bar:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* 全屏選單背景遮罩（半透明黑） */
+.uo-mobile-menu-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 40;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+.uo-mobile-menu-overlay.is-open {
+  opacity: 1;
+}
+
+/* 滑出選單本體（預設藏在右邊外側） */
+.uo-mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 80%;
+  max-width: 360px;
+  background: var(--uo-coal);
+  z-index: 50;
+  transform: translateX(100%);
+  transition: transform .3s ease;
+  flex-direction: column;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.4);
+}
+.uo-mobile-menu.is-open {
+  transform: translateX(0);
+}
+
+.uo-mobile-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 24px 16px 24px;
+  border-bottom: 1px solid var(--uo-line);
+}
+.uo-mobile-menu-title {
+  font-family: var(--font-en);
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  color: var(--uo-mute);
+  font-weight: 600;
+}
+.uo-mobile-menu-close {
+  background: transparent;
+  border: none;
+  color: var(--uo-paper);
+  font-size: 22px;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background .15s;
+}
+.uo-mobile-menu-close:hover {
+  background: var(--uo-smoke);
+}
+
+.uo-mobile-menu-links {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0;
+  flex: 1;
+  overflow-y: auto;
+}
+.uo-mobile-menu-links a {
+  color: var(--uo-paper);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  padding: 16px 24px;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--uo-line);
+  transition: background .15s, color .15s;
+}
+.uo-mobile-menu-links a:hover,
+.uo-mobile-menu-links a:active {
+  background: var(--uo-smoke);
+  color: var(--uo-red-bright);
+}
+
+.uo-mobile-menu-footer {
+  display: flex;
+  gap: 12px;
+  padding: 20px 24px 28px 24px;
+  border-top: 1px solid var(--uo-line);
+}
+.uo-mobile-menu-social {
+  flex: 1;
+  text-align: center;
+  padding: 12px;
+  border: 1px solid var(--uo-line-strong);
+  border-radius: 8px;
+  color: var(--uo-paper);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  transition: background .15s, border-color .15s;
+}
+.uo-mobile-menu-social:hover {
+  background: var(--uo-red);
+  border-color: var(--uo-red);
+}
+
+/* 手機版（≤768px）：啟用漢堡按鈕 + 滑出選單 */
+@media (max-width: 768px) {
+  /* 顯示漢堡按鈕 */
+  .uo-hamburger {
+    display: inline-flex;
+  }
+  /* 顯示滑出選單與遮罩元件（is-open 控制位置） */
+  .uo-mobile-menu {
+    display: flex;
+  }
+  .uo-mobile-menu-overlay {
+    display: block;
+  }
+  /* 把上方舊規則「.uo-nav-links display:none」保留即可（菜單在手機就是要藏） */
+  /* 縮一下 LINE/IG 按鈕和漢堡的間距，讓手機版 nav 不要太擠 */
+  .uo-nav-icons {
+    gap: 8px;
+  }
+  /* 手機版 LINE / IG 按鈕字體微調，避免擠滿 */
+  .uo-nav-icons .uo-icon-btn {
+    min-width: 48px !important;
+    font-size: 12px !important;
+  }
+}
