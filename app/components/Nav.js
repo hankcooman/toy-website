@@ -15,7 +15,7 @@ export default function Nav() {
     { label: '商務合作', href: '/contact' },
   ]
 
-  // 選單打開時，鎖住背景捲動避免可以捲動底下的內容
+  // 選單打開時鎖住背景捲動，避免可以捲動底下的內容
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = 'hidden'
@@ -41,8 +41,18 @@ export default function Nav() {
         ))}
       </div>
 
-      {/* LINE / IG 按鈕：依需求保留在 Nav 上、永遠可見 */}
       <div className="uo-nav-icons">
+        {/* 「選單」按鈕（只在手機版顯示） — 順序：選單 → LINE → IG */}
+        <button
+          type="button"
+          className={`uo-menu-btn ${menuOpen ? 'is-open' : ''}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label={menuOpen ? '關閉選單' : '開啟選單'}
+          aria-expanded={menuOpen}
+        >
+          選單
+        </button>
+
         <a
           href="https://line.me/R/ti/p/@your-line-id"
           target="_blank"
@@ -63,72 +73,58 @@ export default function Nav() {
         >
           IG
         </a>
-
-        {/* 漢堡按鈕（只在手機版顯示，CSS 控制） */}
-        <button
-          type="button"
-          className={`uo-hamburger ${menuOpen ? 'is-open' : ''}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? '關閉選單' : '開啟選單'}
-          aria-expanded={menuOpen}
-        >
-          <span className="uo-hamburger-bar" />
-          <span className="uo-hamburger-bar" />
-          <span className="uo-hamburger-bar" />
-        </button>
       </div>
 
-      {/* 從右邊滑出的全屏選單背景遮罩（點擊關閉選單） */}
-      <div
-        className={`uo-mobile-menu-overlay ${menuOpen ? 'is-open' : ''}`}
-        onClick={() => setMenuOpen(false)}
-        aria-hidden={!menuOpen}
-      />
-
-      {/* 從右邊滑出的全屏選單本體 */}
-      <aside
-        className={`uo-mobile-menu ${menuOpen ? 'is-open' : ''}`}
-        aria-hidden={!menuOpen}
-      >
-        <div className="uo-mobile-menu-header">
-          <span className="uo-mobile-menu-title">MENU</span>
-          <button
-            type="button"
-            className="uo-mobile-menu-close"
+      {/* 滑出選單與遮罩：只在選單開啟時才放進 DOM，避免關閉時誤蓋畫面 */}
+      {menuOpen && (
+        <>
+          <div
+            className="uo-mobile-menu-overlay is-open"
             onClick={() => setMenuOpen(false)}
-            aria-label="關閉選單"
-          >
-            ✕
-          </button>
-        </div>
+            aria-hidden="true"
+          />
+          <aside className="uo-mobile-menu is-open">
+            <div className="uo-mobile-menu-header">
+              <span className="uo-mobile-menu-title">MENU</span>
+              <button
+                type="button"
+                className="uo-mobile-menu-close"
+                onClick={() => setMenuOpen(false)}
+                aria-label="關閉選單"
+              >
+                ✕
+              </button>
+            </div>
 
-        <nav className="uo-mobile-menu-links">
-          {items.map((item, i) => (
-            <a key={i} href={item.href} onClick={handleLinkClick}>
-              {item.label}
-            </a>
-          ))}
-        </nav>
+            <nav className="uo-mobile-menu-links">
+              {items.map((item, i) => (
+                <a key={i} href={item.href} onClick={handleLinkClick}>
+                  {item.label}
+                </a>
+              ))}
+            </nav>
 
-        <div className="uo-mobile-menu-footer">
-          <a
-            href="https://line.me/R/ti/p/@your-line-id"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="uo-mobile-menu-social"
-          >
-            LINE 詢問
-          </a>
-          <a
-            href="https://instagram.com/your-ig-id"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="uo-mobile-menu-social"
-          >
-            IG 私訊
-          </a>
-        </div>
-      </aside>
+            <div className="uo-mobile-menu-footer">
+              <a
+                href="https://line.me/R/ti/p/@your-line-id"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="uo-mobile-menu-social"
+              >
+                LINE 詢問
+              </a>
+              <a
+                href="https://instagram.com/your-ig-id"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="uo-mobile-menu-social"
+              >
+                IG 私訊
+              </a>
+            </div>
+          </aside>
+        </>
+      )}
     </nav>
   )
 }
