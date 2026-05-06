@@ -2108,3 +2108,89 @@
   padding-top: 4px;
   padding-bottom: 8px;
 }
+/* ===== Hero 輪播樣式（2026/05/06 新增） ===== */
+.uo-hero-figure.has-slides {
+  position: relative;
+  overflow: hidden;
+}
+.uo-hero-figure.has-slides .placeholder-label {
+  display: none;
+}
+
+.uo-hero-slider {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.uo-hero-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1a1a1a;
+  transform: translateX(100%);
+  transition: transform .6s ease;
+  pointer-events: none;
+}
+.uo-hero-slide.is-active {
+  transform: translateX(0);
+}
+.uo-hero-slide:has(~ .is-active) {
+  transform: translateX(-100%);
+}
+
+.uo-hero-dots {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 5;
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
+}
+
+.uo-hero-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background .25s, transform .25s;
+}
+.uo-hero-dot:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+.uo-hero-dot.is-active {
+  background: var(--uo-paper);
+  transform: scale(1.3);
+}
+/* ===== 有輪播圖時：擴大圖片區、移除原 figure 的虛線斜紋背景與框線（圖片變主角，紅框變細） ===== */
+.uo-hero-figure.has-slides {
+  width: 96%;             /* 從 78% 拉到 96%，紅邊從 11% 縮到 2% */
+  aspect-ratio: 4 / 3;    /* 改 4:3，配合輪播圖比例 */
+  background: #1a1a1a;    /* 蓋掉原本斜紋背景，變單色（圖會蓋住） */
+  border: none;           /* 拿掉原本的細邊框 */
+}
+
+/* 平板尺寸：紅邊維持細 */
+@media (max-width: 1024px) {
+  .uo-hero-figure.has-slides {
+    width: 97%;
+  }
+}
+
+/* 手機版：圖片填滿、紅邊幾乎消失 */
+@media (max-width: 768px) {
+  .uo-hero-figure.has-slides {
+    width: 98%;
+    aspect-ratio: 16 / 9;  /* 手機版改 16:9 比較不佔高度 */
+  }
+}

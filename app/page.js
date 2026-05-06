@@ -3,7 +3,10 @@ import TopBar from './components/TopBar'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Footer from './components/Footer'
+
+// 啟用 ISR：頁面每 60 秒重新抓一次 Sanity 資料，達到「上架後自動同步」效果
 export const revalidate = 60
+
 async function getProducts() {
   const query = `*[_type == "product" && isPublished == true] | order(_createdAt desc) [0...4] {
     _id,
@@ -23,15 +26,30 @@ async function getProducts() {
   return products
 }
 
+// 撈首頁輪播圖（依 order 排序，只撈啟用的）
+async function getHeroSlides() {
+  const query = `*[_type == "heroSlide" && isActive == true] | order(order asc) {
+    _id,
+    title,
+    image,
+    order
+  }`
+  return await client.fetch(query)
+}
+
 export default async function Home() {
-  const products = await getProducts()
+  // 同時撈商品和輪播圖，兩個查詢並行進行
+  const [products, heroSlides] = await Promise.all([
+    getProducts(),
+    getHeroSlides(),
+  ])
 
   return (
     <>
       <TopBar />
       <Nav />
       <main>
-        <Hero />
+        <Hero slides={heroSlides} />
 
         <section id="products" className="uo-list-head">
           <div className="uo-crumb">SECTION 02 · CURRENT COLLECTION</div>
