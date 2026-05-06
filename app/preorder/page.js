@@ -3,7 +3,7 @@ import TopBar from '../components/TopBar'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import ProductsList from '../products/ProductsList'
-
+export const revalidate = 60
 async function getData() {
   const [products, ipSeriesList, categoryList] = await Promise.all([
     client.fetch(`*[_type == "product" && isPublished == true && baseStockStatus == "preorder"] | order(_createdAt desc) {

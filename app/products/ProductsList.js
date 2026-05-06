@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { urlFor } from '../../sanity'
 
 const PAGE_SIZE = 12
@@ -11,27 +11,34 @@ export default function ProductsList({ products, ipSeriesList, categoryList }) {
   const [sortBy, setSortBy] = useState('newest')
   const [currentPage, setCurrentPage] = useState(1)
 
+  // 篩選器分組的「展開/收合」狀態 — 桌機預設展開、手機預設收合
+  // 用 null 當初始值，等掛載後依視窗寬度設定，避免 SSR/CSR 不一致
+  const [ipOpen, setIpOpen] = useState(null)
+  const [catOpen, setCatOpen] = useState(null)
+
+  useEffect(() => {
+    // 元件掛載後依視窗寬度決定預設狀態
+    const isDesktop = window.innerWidth > 768
+    setIpOpen(isDesktop)
+    setCatOpen(isDesktop)
+  }, [])
+
   // 篩選 + 排序的計算結果
   const filteredProducts = useMemo(() => {
     let result = [...products]
 
-    // 篩選 IP
     if (selectedIp !== 'all') {
       result = result.filter(p => p.ipSeriesSlug === selectedIp)
     }
-
-    // 篩選 類型
     if (selectedCategory !== 'all') {
       result = result.filter(p => p.categorySlug === selectedCategory)
     }
 
-    // 排序
     if (sortBy === 'priceLow') {
       result.sort((a, b) => a.basePrice - b.basePrice)
     } else if (sortBy === 'priceHigh') {
       result.sort((a, b) => b.basePrice - a.basePrice)
     }
-    // newest 就是預設順序（_createdAt desc 已在 GROQ 處理）
 
     return result
   }, [products, selectedIp, selectedCategory, sortBy])
@@ -50,77 +57,113 @@ export default function ProductsList({ products, ipSeriesList, categoryList }) {
     setCurrentPage(1)
   }
 
-  // 計算每個 IP 有幾筆商品（顯示在篩選器旁）
+  // 計算每個 IP / 商品類型有幾筆商品（顯示在篩選器旁）
   const getIpCount = (slug) => {
     if (slug === 'all') return products.length
     return products.filter(p => p.ipSeriesSlug === slug).length
   }
-
   const getCategoryCount = (slug) => {
     if (slug === 'all') return products.length
     return products.filter(p => p.categorySlug === slug).length
   }
 
+  // 顯示在標題旁的「目前選中的篩選值」（收合時讓人知道目前選了什麼）
+  const ipBadge = selectedIp === 'all'
+    ? '全部'
+    : (ipSeriesList.find(i => i.slug === selectedIp)?.name || '全部')
+  const catBadge = selectedCategory === 'all'
+    ? '全部'
+    : (categoryList.find(c => c.slug === selectedCategory)?.name || '全部')
+
   return (
     <div className="uo-list-body">
       {/* 左側篩選器 */}
       <aside className="uo-filter">
-        <div className="uo-filter-group">
-          <h6>IP 系列</h6>
-          <label className="uo-filter-opt">
-            <input
-              type="radio"
-              name="ip"
-              checked={selectedIp === 'all'}
-              onChange={() => handleFilterChange('ip', 'all')}
-            />
-            <span className="lab">全部</span>
-            <span className="count">{getIpCount('all')}</span>
-          </label>
-          {ipSeriesList.map((ip) => (
-            <label key={ip._id} className="uo-filter-opt">
+        {/* IP 系列篩選分組（手風琴） */}
+        <div className={`uo-filter-group accordion ${ipOpen ? 'is-open' : ''}`}>
+          <button
+            type="button"
+            className="uo-filter-head"
+            onClick={() => setIpOpen(!ipOpen)}
+            aria-expanded={!!ipOpen}
+          >
+            <span className="uo-filter-head-title">IP 系列</span>
+            <span className="uo-filter-head-meta">
+              <span className="uo-filter-head-badge">{ipBadge}</span>
+              <span className="uo-filter-head-arrow" aria-hidden="true">▼</span>
+            </span>
+          </button>
+
+          <div className="uo-filter-body">
+            <label className="uo-filter-opt">
               <input
                 type="radio"
                 name="ip"
-                checked={selectedIp === ip.slug}
-                onChange={() => handleFilterChange('ip', ip.slug)}
+                checked={selectedIp === 'all'}
+                onChange={() => handleFilterChange('ip', 'all')}
               />
-              <span className="lab">{ip.name}</span>
-              <span className="count">{getIpCount(ip.slug)}</span>
+              <span className="lab">全部</span>
+              <span className="count">{getIpCount('all')}</span>
             </label>
-          ))}
+            {ipSeriesList.map((ip) => (
+              <label key={ip._id} className="uo-filter-opt">
+                <input
+                  type="radio"
+                  name="ip"
+                  checked={selectedIp === ip.slug}
+                  onChange={() => handleFilterChange('ip', ip.slug)}
+                />
+                <span className="lab">{ip.name}</span>
+                <span className="count">{getIpCount(ip.slug)}</span>
+              </label>
+            ))}
+          </div>
         </div>
 
-        <div className="uo-filter-group">
-          <h6>商品類型</h6>
-          <label className="uo-filter-opt">
-            <input
-              type="radio"
-              name="category"
-              checked={selectedCategory === 'all'}
-              onChange={() => handleFilterChange('category', 'all')}
-            />
-            <span className="lab">全部</span>
-            <span className="count">{getCategoryCount('all')}</span>
-          </label>
-          {categoryList.map((cat) => (
-            <label key={cat._id} className="uo-filter-opt">
+        {/* 商品類型篩選分組（手風琴） */}
+        <div className={`uo-filter-group accordion ${catOpen ? 'is-open' : ''}`}>
+          <button
+            type="button"
+            className="uo-filter-head"
+            onClick={() => setCatOpen(!catOpen)}
+            aria-expanded={!!catOpen}
+          >
+            <span className="uo-filter-head-title">商品類型</span>
+            <span className="uo-filter-head-meta">
+              <span className="uo-filter-head-badge">{catBadge}</span>
+              <span className="uo-filter-head-arrow" aria-hidden="true">▼</span>
+            </span>
+          </button>
+
+          <div className="uo-filter-body">
+            <label className="uo-filter-opt">
               <input
                 type="radio"
                 name="category"
-                checked={selectedCategory === cat.slug}
-                onChange={() => handleFilterChange('category', cat.slug)}
+                checked={selectedCategory === 'all'}
+                onChange={() => handleFilterChange('category', 'all')}
               />
-              <span className="lab">{cat.emoji} {cat.name}</span>
-              <span className="count">{getCategoryCount(cat.slug)}</span>
+              <span className="lab">全部</span>
+              <span className="count">{getCategoryCount('all')}</span>
             </label>
-          ))}
+            {categoryList.map((cat) => (
+              <label key={cat._id} className="uo-filter-opt">
+                <input
+                  type="radio"
+                  name="category"
+                  checked={selectedCategory === cat.slug}
+                  onChange={() => handleFilterChange('category', cat.slug)}
+                />
+                <span className="lab">{cat.emoji} {cat.name}</span>
+                <span className="count">{getCategoryCount(cat.slug)}</span>
+              </label>
+            ))}
+          </div>
         </div>
       </aside>
 
       {/* 右側商品區 */}
       <section>
-        {/* 工具列：篩選結果計數 + 排序 */}
         <div className="uo-toolbar">
           <span style={{ color: 'var(--uo-mute)', fontFamily: 'var(--font-en)', fontSize: 11, letterSpacing: '0.2em' }}>
             {filteredProducts.length} RESULTS
@@ -134,7 +177,6 @@ export default function ProductsList({ products, ipSeriesList, categoryList }) {
           </div>
         </div>
 
-        {/* 商品網格 */}
         {pagedProducts.length === 0 ? (
           <div style={{ padding: 80, textAlign: 'center', color: 'var(--uo-mute)' }}>
             這個篩選沒有商品。
@@ -202,7 +244,6 @@ export default function ProductsList({ products, ipSeriesList, categoryList }) {
           </div>
         )}
 
-        {/* 分頁 */}
         {totalPages > 1 && (
           <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginTop: 32, padding: '24px 0' }}>
             <button

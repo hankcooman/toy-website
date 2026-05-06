@@ -3,7 +3,7 @@ import TopBar from './components/TopBar'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Footer from './components/Footer'
-
+export const revalidate = 60
 async function getProducts() {
   const query = `*[_type == "product" && isPublished == true] | order(_createdAt desc) [0...4] {
     _id,

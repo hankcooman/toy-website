@@ -3,7 +3,7 @@ import TopBar from '../components/TopBar'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import ProductsList from '../products/ProductsList'
-
+export const revalidate = 60
 async function getData() {
   // 同時抓三種資料：現貨商品、IP 系列、商品類型
   const [products, ipSeriesList, categoryList] = await Promise.all([

@@ -4,7 +4,7 @@ import Nav from '../../components/Nav'
 import Footer from '../../components/Footer'
 import ProductDetail from './ProductDetail'
 import { notFound } from 'next/navigation'
-
+export const revalidate = 60
 async function getProduct(slug) {
   const query = `*[_type == "product" && slug.current == $slug && isPublished == true][0]{
     _id,

@@ -2036,3 +2036,75 @@
     font-size: 12px !important;
   }
 }
+/* ===== 篩選器手風琴樣式（2026/05/06 新增） ===== */
+/* 左側篩選器分組標題列：可點擊展開/收合 */
+.uo-filter-group.accordion {
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--uo-line);
+  padding-bottom: 8px;
+}
+
+.uo-filter-head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  border: none;
+  padding: 12px 4px;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  transition: opacity .15s;
+}
+.uo-filter-head:hover {
+  opacity: 0.7;
+}
+
+.uo-filter-head-title {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--uo-red);   /* 標題用品牌紅，跟原本「IP 系列」h6 一致 */
+}
+
+.uo-filter-head-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 標題列右邊：「目前選中項目」徽章 */
+.uo-filter-head-badge {
+  font-size: 12px;
+  color: var(--uo-mute);
+  font-weight: 500;
+  max-width: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 標題列右邊：箭頭（展開時旋轉） */
+.uo-filter-head-arrow {
+  font-size: 10px;
+  color: var(--uo-mute);
+  transition: transform .25s ease;
+  display: inline-block;
+}
+.uo-filter-group.accordion.is-open .uo-filter-head-arrow {
+  transform: rotate(180deg);
+}
+
+/* 內容區：預設收合（max-height: 0） */
+.uo-filter-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease;
+}
+.uo-filter-group.accordion.is-open .uo-filter-body {
+  max-height: 1200px; /* 足夠容納所有 IP 系列項目 */
+  padding-top: 4px;
+  padding-bottom: 8px;
+}

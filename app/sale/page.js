@@ -3,7 +3,7 @@ import TopBar from '../components/TopBar'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import ProductsList from '../products/ProductsList'
-
+export const revalidate = 60
 async function getData() {
   // 限時特惠：tags 陣列裡有 "sale" 的商品
   const [products, ipSeriesList, categoryList] = await Promise.all([
