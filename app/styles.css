@@ -2214,3 +2214,127 @@
     letter-spacing: 0.1em;
   }
 }
+
+/* ===== 關於我們頁樣式（2026/05/06 整理乾淨版）===== */
+.uo-about {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 64px 24px 96px;
+  text-align: center;
+}
+
+.uo-about-eyebrow {
+  font-family: var(--font-en);
+  font-size: 13px;
+  letter-spacing: 0.35em;
+  color: var(--uo-red-bright) !important;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.uo-about-title {
+  font-family: var(--font-display);
+  font-size: 72px;
+  font-weight: 900;
+  line-height: 1.2;
+  margin: 0 0 40px 0;
+  color: #181818 !important;
+  letter-spacing: 0.02em;
+}
+.uo-about-title .accent-red {
+  color: var(--uo-red-bright) !important;
+}
+
+.uo-about-lead {
+  font-size: 20px;
+  line-height: 1.9;
+  color: #181818 !important;
+  margin: 0 auto 24px;
+  max-width: 680px;
+  font-weight: 500;
+}
+
+.uo-about-body {
+  font-size: 16px;
+  line-height: 2;
+  color: var(--uo-mute);
+  margin: 0 auto 48px;
+  max-width: 680px;
+}
+
+/* 聯絡資訊區 */
+.uo-about-info {
+  max-width: 460px;
+  margin: 0 auto;
+  padding: 32px 0;
+  border-top: 1px solid var(--uo-line);
+  border-bottom: 1px solid var(--uo-line);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.uo-about-info-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+}
+.uo-about-info-arrow {
+  color: var(--uo-red-bright) !important;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.uo-about-info-label {
+  color: #181818 !important;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  min-width: 80px;
+  text-align: left;
+}
+.uo-about-info-value {
+  color: #181818 !important;
+  font-family: var(--font-en);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+/* 平板尺寸 */
+@media (max-width: 1024px) {
+  .uo-about-title {
+    font-size: 56px;
+  }
+}
+
+/* 手機版 */
+@media (max-width: 768px) {
+  .uo-about {
+    padding: 40px 20px 64px;
+  }
+  .uo-about-eyebrow {
+    font-size: 11px;
+    margin-bottom: 16px;
+  }
+  .uo-about-title {
+    font-size: 40px;
+    margin-bottom: 28px;
+  }
+  .uo-about-lead {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+  .uo-about-body {
+    font-size: 14px;
+    line-height: 1.9;
+  }
+  .uo-about-info {
+    padding: 24px 0;
+  }
+  .uo-about-info-row {
+    font-size: 14px;
+    gap: 8px;
+  }
+  .uo-about-info-label {
+    min-width: 70px;
+  }
+}

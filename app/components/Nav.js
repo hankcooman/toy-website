@@ -12,7 +12,7 @@ export default function Nav() {
     { label: '限時特惠', href: '/sale' },
     { label: '關於我們', href: '/about' },
     { label: '通路據點', href: '/locations' },
-    { label: '商務合作', href: '/contact' },
+    // { label: '商務合作', href: '/contact' },
   ]
 
   // 選單打開時鎖住背景捲動，避免可以捲動底下的內容
