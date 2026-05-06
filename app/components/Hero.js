@@ -62,7 +62,8 @@ export default function Hero({ slides = [] }) {
           </div>
         </div>
 
-        <div className="uo-hero-right">
+        {/* 有輪播圖時 .uo-hero-right 多一個 has-slides class，CSS 用它控制虛線/戳印 */}
+        <div className={`uo-hero-right ${hasSlides ? 'has-slides' : ''}`}>
           <span className="uo-hero-tag">★ FEATURED · 2026</span>
 
           {hasSlides ? (
@@ -76,7 +77,7 @@ export default function Hero({ slides = [] }) {
                   return (
                     <div
                       key={slide._id}
-                      className={`uo-hero-slide ${i === activeIndex ? 'is-active' : ''}`}
+                      className={`uo-hero-slide ${i === activeIndex ? 'is-active' : ''} ${i < activeIndex ? 'is-past' : ''}`}
                       style={imgUrl ? {
                         backgroundImage: `url(${imgUrl})`,
                         backgroundSize: 'cover',

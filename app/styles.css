@@ -2137,7 +2137,8 @@
 .uo-hero-slide.is-active {
   transform: translateX(0);
 }
-.uo-hero-slide:has(~ .is-active) {
+/* 已經播過的 slide 從左邊滑出（由 React 加 .is-past className 控制，避免使用 :has()） */
+.uo-hero-slide.is-past {
   transform: translateX(-100%);
 }
 
@@ -2172,25 +2173,34 @@
   background: var(--uo-paper);
   transform: scale(1.3);
 }
-/* ===== 有輪播圖時：擴大圖片區、移除原 figure 的虛線斜紋背景與框線（圖片變主角，紅框變細） ===== */
+/* ===== 有輪播圖時：圖片佔滿、紅邊縮細、藏掉裝飾元素 ===== */
+/* 桌機版預設規則 */
 .uo-hero-figure.has-slides {
   width: 96%;             /* 從 78% 拉到 96%，紅邊從 11% 縮到 2% */
   aspect-ratio: 4 / 3;    /* 改 4:3，配合輪播圖比例 */
-  background: #1a1a1a;    /* 蓋掉原本斜紋背景，變單色（圖會蓋住） */
+  background: #1a1a1a;    /* 蓋掉原本斜紋背景 */
   border: none;           /* 拿掉原本的細邊框 */
 }
 
-/* 平板尺寸：紅邊維持細 */
+/* 有輪播圖時藏掉虛線圓圈裝飾（不再用 :has()，改用 .uo-hero-right.has-slides） */
+.uo-hero-right.has-slides .uo-hero-circle {
+  display: none;
+}
+
+/* 平板：紅邊維持細 */
 @media (max-width: 1024px) {
   .uo-hero-figure.has-slides {
     width: 97%;
   }
 }
 
-/* 手機版：圖片填滿、紅邊幾乎消失 */
+/* 手機版：圖片填滿、藏掉戳印、回到 1:1 比例 */
 @media (max-width: 768px) {
   .uo-hero-figure.has-slides {
     width: 98%;
-    aspect-ratio: 16 / 9;  /* 手機版改 16:9 比較不佔高度 */
+    aspect-ratio: 1 / 1;   /* 回到正方形，不再被 16:9 壓扁 */
+  }
+  .uo-hero-right.has-slides .uo-hero-stamp {
+    display: none;         /* 手機版藏掉左下圓形戳印，避免擠到輪播圖 */
   }
 }
