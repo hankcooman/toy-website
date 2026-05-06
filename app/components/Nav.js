@@ -54,7 +54,7 @@ export default function Nav() {
         </button>
 
         <a
-          href="https://line.me/R/ti/p/@your-line-id"
+          href="https://lin.ee/6YVErL5"
           target="_blank"
           rel="noopener noreferrer"
           className="uo-icon-btn"
@@ -64,7 +64,7 @@ export default function Nav() {
           LINE
         </a>
         <a
-          href="https://instagram.com/your-ig-id"
+          href="https://www.instagram.com/ultimatetoys__/"
           target="_blank"
           rel="noopener noreferrer"
           className="uo-icon-btn"

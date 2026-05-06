@@ -59,12 +59,12 @@ export default function Footer() {
           <h5>FOLLOW</h5>
           <ul>
             <li>
-              <a href="https://line.me/R/ti/p/@your-line-id" target="_blank" rel="noopener noreferrer">
+              <a href="https://lin.ee/6YVErL5" target="_blank" rel="noopener noreferrer">
                 LINE 官方帳號
               </a>
             </li>
             <li>
-              <a href="https://instagram.com/your-ig-id" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/ultimatetoys__/" target="_blank" rel="noopener noreferrer">
                 Instagram
               </a>
             </li>
