@@ -2204,3 +2204,13 @@
     display: none;         /* 手機版藏掉左下圓形戳印，避免擠到輪播圖 */
   }
 }
+/* 手機版：FEATURED 標籤縮小 */
+@media (max-width: 768px) {
+  .uo-hero-tag {
+    top: 12px;
+    right: 12px;
+    padding: 4px 9px;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+  }
+}
