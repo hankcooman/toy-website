@@ -171,7 +171,7 @@ export default async function Home() {
 
           {/* 「查看全部商品」按鈕 */}
           {products.length > 0 && (
-            <div style={{ display: 'flex', justifyContent: 'center', padding: '0 24px 80px' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', padding: '48px 24px 80px' }}>
               <a href="/products" className="uo-btn ghost" style={{ textDecoration: 'none', fontSize: 14, padding: '14px 36px' }}>
                 查看全部商品 →
               </a>

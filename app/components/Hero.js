@@ -34,14 +34,12 @@ export default function Hero({ slides = [] }) {
               收藏<span className="accent">究極</span><br />
               玩出 <span className="stroke">不羈</span>
             </h1>
-            <p className="lead">
-              來自全球的玩具、盲盒與絨毛玩偶的集成商店。每月精選 IP 上架，商品皆是正版授權商品，請放心選購。
+           <p className="lead">
+            來自全球的玩具、盲盒與絨毛玩偶的集成商店。<br />
+            每月精選 IP 上架，商品皆是正版授權商品，請放心選購。
             </p>
             <div className="uo-hero-cta">
-              <a href="https://lin.ee/6YVErL5" target="_blank" rel="noopener noreferrer" className="uo-btn red" style={{ textDecoration: 'none' }}>
-                LINE 詢問
-              </a>
-              <a href="/products" className="uo-btn ghost" style={{ textDecoration: 'none' }}>
+               <a href="/products" className="uo-btn primary" style={{ textDecoration: 'none' }}>
                 瀏覽商品
               </a>
             </div>

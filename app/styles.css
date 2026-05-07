@@ -705,7 +705,7 @@
 }
 .uo-foot-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr;
   gap: 32px;
   padding-bottom: 32px;
   border-bottom: 1px solid var(--uo-line);
@@ -2336,5 +2336,286 @@
   }
   .uo-about-info-label {
     min-width: 70px;
+  }
+}
+/* ========================================================================
+   通路據點頁 /locations  ─ 2026/05/07 v2
+   圖文並茂卡片版（3 據點：桌機 3 欄 / 平板 2 欄 / 手機 1 欄）
+   ======================================================================== */
+
+.locations-page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+/* 頁首 */
+.locations-hero {
+  text-align: center;
+  padding: 60px 20px 40px;
+}
+
+.locations-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin: 0 0 12px;
+  letter-spacing: 2px;
+  color: #111;
+}
+
+.locations-subtitle {
+  font-size: 1.05rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.7;
+}
+
+/* 卡片網格 ─ 桌機 3 欄 / 平板 2 欄 / 手機 1 欄 */
+.locations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 20px;
+}
+
+@media (max-width: 1024px) {
+  .locations-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .locations-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .locations-title {
+    font-size: 1.8rem;
+  }
+
+  .locations-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .locations-hero {
+    padding: 40px 16px 24px;
+  }
+}
+
+/* 單張卡片 */
+.location-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.location-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* 圖片區 */
+.location-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+.location-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.location-card:hover .location-image img {
+  transform: scale(1.04);
+}
+
+/* 文字資訊區 */
+.location-info {
+  padding: 24px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.location-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 0 12px;
+  color: #111;
+  letter-spacing: 0.5px;
+}
+
+.location-address {
+  font-size: 0.98rem;
+  color: #555;
+  line-height: 1.6;
+  margin: 0 0 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.location-icon {
+  flex-shrink: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* 地圖按鈕 */
+.location-map-btn {
+  display: inline-block;
+  margin-top: auto;
+  align-self: flex-start;
+  padding: 9px 20px;
+  background: #c8102e;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.location-map-btn:hover {
+  background: #a00d24;
+}
+
+/* 結尾 CTA */
+.locations-cta {
+  margin-top: 64px;
+  padding: 36px 24px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.locations-cta-text {
+  font-size: 1rem;
+  color: #555;
+  margin: 0 0 18px;
+  line-height: 1.7;
+}
+
+.locations-cta-btn {
+  display: inline-block;
+  padding: 11px 28px;
+  background: #06c755;
+  color: #fff;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: background 0.2s ease;
+}
+
+.locations-cta-btn:hover {
+  background: #05a647;
+}
+
+@media (max-width: 768px) {
+  .locations-cta {
+    margin-top: 40px;
+    padding: 28px 18px;
+  }
+}
+/* ========================================================================
+   首頁 Hero 按鈕質感化  ─ 2026/05/07
+   拿掉 LINE 詢問，瀏覽商品變主視覺風格（黑底膠囊、置中、hover 浮起）
+   ======================================================================== */
+
+/* CTA 容器：對齊上方文字左側 */
+.uo-hero-cta {
+  justify-content: flex-start;
+}
+
+/* 瀏覽商品主視覺按鈕 */
+.uo-btn.primary {
+  display: inline-block;
+  padding: 14px 48px;
+  background: #111;
+  color: #fff;
+  border: 1px solid #111;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.uo-btn.primary:hover {
+  background: transparent;
+  color: #111;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+  .uo-btn.primary {
+    padding: 12px 40px;
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+  }
+}
+/* ========================================================================
+   Nav 社群按鈕（LINE/IG）質感化  ─ 2026/05/07 v2
+   實心黑圓 + SVG 圖標，hover 變紅、微浮起
+   ======================================================================== */
+
+.uo-icon-btn.uo-icon-social {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  padding: 0;
+  border: 1px solid #111;
+  background: #111;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.25s ease;
+}
+
+.uo-icon-btn.uo-icon-social svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+.uo-icon-btn.uo-icon-social:hover {
+  background: var(--uo-red-bright);
+  border-color: var(--uo-red-bright);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.uo-icon-btn.uo-icon-social:hover svg {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .uo-icon-btn.uo-icon-social {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+  }
+  .uo-icon-btn.uo-icon-social svg {
+    width: 19px;
+    height: 19px;
   }
 }

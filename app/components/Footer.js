@@ -38,20 +38,10 @@ export default function Footer() {
         <div>
           <h5>SHOP</h5>
           <ul>
-            <li><a href="/">全部商品</a></li>
-            <li><a href="/">新品上架</a></li>
-            <li><a href="/">預購商品</a></li>
-            <li><a href="/">特價區</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h5>SUPPORT</h5>
-          <ul>
-            <li><a href="/">購物須知</a></li>
-            <li><a href="/">運送方式</a></li>
-            <li><a href="/">退換貨政策</a></li>
-            <li><a href="/">常見問題</a></li>
+            <li><a href="/products">全部商品</a></li>
+            <li><a href="/in-stock">現貨商品</a></li>
+            <li><a href="/preorder">預購商品</a></li>
+            <li><a href="/sale">特價區</a></li>
           </ul>
         </div>
 
@@ -66,11 +56,6 @@ export default function Footer() {
             <li>
               <a href="https://www.instagram.com/ultimatetoys__/" target="_blank" rel="noopener noreferrer">
                 Instagram
-              </a>
-            </li>
-            <li>
-              <a href="https://facebook.com/your-fb-page" target="_blank" rel="noopener noreferrer">
-                Facebook
               </a>
             </li>
           </ul>
