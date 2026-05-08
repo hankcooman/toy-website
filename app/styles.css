@@ -2626,3 +2626,88 @@
     height: 19px;
   }
 }
+/* ==========================================================================
+   政策頁面樣式 (Terms / Privacy) - 2026/05/08
+   ========================================================================== */
+
+.uo-policy {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--uo-paper);
+}
+
+.uo-policy-intro {
+  font-size: 15px;
+  background: rgba(184, 37, 44, 0.06);
+  border-left: 3px solid var(--uo-red);
+  padding: 16px 20px;
+  margin: 0 0 32px;
+  line-height: 1.8;
+}
+
+.uo-policy h2 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  margin: 40px 0 16px;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--uo-line);
+  padding-bottom: 8px;
+}
+
+.uo-policy h3 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  margin: 28px 0 12px;
+}
+
+.uo-policy p {
+  margin: 0 0 16px;
+}
+
+.uo-policy ul,
+.uo-policy ol {
+  margin: 0 0 16px;
+  padding-left: 24px;
+}
+
+.uo-policy li {
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+
+.uo-policy strong {
+  color: var(--uo-red);
+  font-weight: 700;
+}
+
+.uo-policy a {
+  color: var(--uo-red);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.uo-policy a:hover {
+  color: var(--uo-red-bright);
+}
+
+@media (max-width: 768px) {
+  .uo-policy {
+    padding: 24px 16px 64px;
+    font-size: 13px;
+  }
+  .uo-policy h2 {
+    font-size: 18px;
+  }
+  .uo-policy h3 {
+    font-size: 15px;
+  }
+  .uo-policy-intro {
+    padding: 14px 16px;
+    font-size: 14px;
+  }
+}
