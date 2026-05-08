@@ -1068,13 +1068,19 @@
     font-size: 14px;
   }
 
-  /* Footer 改 2 欄 */
+/* Footer：品牌欄整排 + SHOP / FOLLOW 並排 */
   .uo-foot {
     padding: 32px 16px;
   }
   .uo-foot-grid {
     grid-template-columns: 1fr 1fr;
     gap: 24px;
+  }
+  .uo-foot-grid > div:first-child {
+    grid-column: 1 / -1;
+  }
+  .uo-foot-grid > div:nth-child(2) {
+    padding-left: 24px;
   }
   .uo-foot h5 {
     font-size: 11px;
@@ -2026,9 +2032,10 @@
   .uo-menu-btn {
     display: inline-flex;
   }
-  /* 縮一下手機版 nav 圖示間距，避免擠 */
+  /* 縮一下手機版 nav 圖示間距，避免擠 + 推到最右側 */
   .uo-nav-icons {
     gap: 8px;
+    margin-left: auto;
   }
   /* 手機版 LINE / IG 按鈕字體微調 */
   .uo-nav-icons .uo-icon-btn {
