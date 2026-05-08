@@ -4,6 +4,13 @@ import './styles.css'
 export const metadata = {
   title: '究極玩型錄',
   description: '支援~。',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon-192.png', type: 'image/png', sizes: '192x192' },
+    ],
+    apple: '/apple-icon.png',
+  },
 }
 
 export default function RootLayout({ children }) {
