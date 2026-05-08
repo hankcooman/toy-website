@@ -3,7 +3,7 @@ import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 
 export const metadata = {
-  title: '關於我們 - 究極玩 Ultimate Toys',
+  title: '商務合作 - 究極玩 Ultimate Toys',
 }
 
 export default function AboutPage() {
@@ -17,10 +17,10 @@ export default function AboutPage() {
           <div className="uo-crumb">
             <a href="/" style={{ color: 'inherit' }}>首頁</a>
             {' / '}
-            <span>關於我們</span>
+            <span>商務合作</span>
           </div>
           <h1 className="uo-list-title">
-            關於我們
+            商務合作
             <span style={{
               color: 'var(--uo-red-bright)',
               fontFamily: 'var(--font-en)',
@@ -29,7 +29,7 @@ export default function AboutPage() {
               letterSpacing: '0.1em',
               marginLeft: 12,
             }}>
-              ABOUT US
+              BUSINESS
             </span>
           </h1>
           <div className="uo-list-meta">
@@ -49,8 +49,8 @@ export default function AboutPage() {
             是<span className="accent-red">大人小孩</span>共通的浪漫
           </h2>
 
-          <p className="uo-about-lead">
-            究極玩成立於 2026 年，主要販售關於盒玩、各式 IP 周邊、文創商品為主。
+          <p className="uo-about-lead" style={{ maxWidth: 'none' }}>
+            究極玩成立於 2026 年，於「全台景點」販售關於盒玩、各式 IP 周邊、文創商品。
           </p>
 
           <p className="uo-about-body">
@@ -58,6 +58,16 @@ export default function AboutPage() {
           </p>
 
           <div className="uo-about-info">
+          <p style={{
+            textAlign: 'center',
+            fontSize: 14,
+            color: '#1a1a1a',
+            fontWeight: 600,
+            marginBottom: 20,
+            letterSpacing: '0.05em',
+          }}>
+              商業合作請來信📩
+            </p>
             <div className="uo-about-info-row">
               <span className="uo-about-info-arrow">➤</span>
               <span className="uo-about-info-label">統一編號</span>

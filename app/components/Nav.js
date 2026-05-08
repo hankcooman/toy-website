@@ -10,7 +10,7 @@ export default function Nav() {
     { label: '現貨商品', href: '/in-stock' },
     { label: '搶先預購', href: '/preorder' },
     { label: '限時特惠', href: '/sale' },
-    { label: '關於我們', href: '/about' },
+    { label: '商務合作', href: '/about' },
     { label: '通路據點', href: '/locations' },
     // { label: '商務合作', href: '/contact' },
   ]

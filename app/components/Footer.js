@@ -58,6 +58,7 @@ export default function Footer() {
                 Instagram
               </a>
             </li>
+            <li><a href="/about">商務合作</a></li>
           </ul>
         </div>
       </div>
