@@ -65,6 +65,10 @@ export default function Footer() {
 
       <div className="uo-foot-bot">
         <span>© 2026 ULTIMATE TOYS · ALL RIGHTS RESERVED</span>
+        <span style={{ display: 'flex', gap: 16, fontSize: 11, justifyContent: 'center' }}>
+          <a href="/terms" style={{ color: 'inherit' }}>服務條款</a>
+          <a href="/privacy" style={{ color: 'inherit' }}>隱私權聲明</a>
+        </span>
         <span>POWERED BY 究極玩</span>
       </div>
     </footer>

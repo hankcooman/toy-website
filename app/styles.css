@@ -2711,3 +2711,10 @@
     font-size: 14px;
   }
 }
+.uo-foot-bot {
+  align-items: center;
+}
+.uo-foot-bot > span:nth-child(2) {
+  flex: 1;
+  text-align: center;
+}
