@@ -32,12 +32,21 @@ export const metadata = {
     siteName: '究極玩 Ultimate Toys',
     title: '究極玩 Ultimate Toys',
     description: '來自全球的玩具、盲盒與絨毛玩偶的集成商店。每月精選 IP 上架，商品皆是正版授權商品，請放心選購。',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: '究極玩 Ultimate Toys',
+      },
+    ],
   },
 
   twitter: {
     card: 'summary_large_image',
     title: '究極玩 Ultimate Toys',
     description: '來自全球的玩具、盲盒與絨毛玩偶的集成商店。',
+    images: ['/og-image.png'],
   },
 
   robots: {
