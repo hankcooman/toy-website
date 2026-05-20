@@ -1,7 +1,7 @@
 import './globals.css'
 import './styles.css'
 
-const SITE_URL = 'https://toy-website-omega.vercel.app'
+const SITE_URL = 'https://uttoys.com'
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
