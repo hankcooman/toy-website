@@ -36,6 +36,18 @@ const LOCATIONS = [
     image: '/locations/okuma_center.jpg',
     mapUrl: '',
   },
+    {
+    name: '高雄科工館1F(易奇趣)',
+    address: '高雄市三民區安發里九如一路720號',
+    image: '/locations/NSTM.jpg',
+    mapUrl: '',
+  },
+    {
+    name: '台南FOCUS 4F(加長超市)',
+    address: '台南市中西區中山路166號4樓',
+    image: '/locations/loongmarket.jpg',
+    mapUrl: '',
+  },
 ]
 // =================================================================
 
