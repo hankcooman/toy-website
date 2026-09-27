@@ -112,9 +112,15 @@ export default function ProductDetail({ product }) {
             {stock.text && (
               <span className={`uo-prod-stock ${stock.cls} uo-detail-stock-inline`}>
                 • {stock.text}
+                {product.baseStockStatus === 'inStock' && product.stockQty > 0 && `・門市庫存 ${product.stockQty} 個`}
               </span>
             )}
           </div>
+          {typeof product.stockQty === 'number' && (
+            <p className="uo-detail-sub" style={{ fontSize: 12, marginTop: 4 }}>
+              ※ 庫存數量每週更新，實際以門市現場為準
+            </p>
+          )}
 
           {/* LINE / IG 詢問按鈕 */}
           <div className="uo-detail-cta">
