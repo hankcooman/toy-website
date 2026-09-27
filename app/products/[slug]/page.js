@@ -18,6 +18,7 @@ async function getProduct(slug) {
     "categorySlug": category->slug.current,
     "categoryEmoji": category->emoji,
     baseStockStatus,
+    stockQty,
     tags,
     shortDescription,
     description,
