@@ -23,7 +23,7 @@ async function getData() {
       slug,
       _createdAt
     }`),
-    client.fetch(`*[_type == "ipSeries"] | order(sortOrder asc) {
+   client.fetch(`*[_type == "ipSeries"] | order(order asc, name asc) {
       _id,
       name,
       "slug": slug.current,
