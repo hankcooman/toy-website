@@ -105,7 +105,7 @@ export default function ProductsList({ products, ipSeriesList, categoryList }) {
               <span className="lab">全部</span>
               <span className="count">{getIpCount('all')}</span>
             </label>
-            {ipSeriesList.map((ip) => (
+            {ipSeriesList.filter((ip) => getIpCount(ip.slug) > 0).map((ip) => (
               <label key={ip._id} className="uo-filter-opt">
                 <input
                   type="radio"
@@ -146,7 +146,7 @@ export default function ProductsList({ products, ipSeriesList, categoryList }) {
               <span className="lab">全部</span>
               <span className="count">{getCategoryCount('all')}</span>
             </label>
-            {categoryList.map((cat) => (
+            {categoryList.filter((cat) => getCategoryCount(cat.slug) > 0).map((cat) => (
               <label key={cat._id} className="uo-filter-opt">
                 <input
                   type="radio"
