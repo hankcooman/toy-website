@@ -2718,3 +2718,6 @@
   flex: 1;
   text-align: center;
 }
+/* 2026/10/03 防止長品名把商品格撐破（iPhone Safari） */
+.uo-prod-grid > * { min-width: 0; }
+.uo-prod-info, .uo-prod-name { min-width: 0; overflow-wrap: anywhere; }
